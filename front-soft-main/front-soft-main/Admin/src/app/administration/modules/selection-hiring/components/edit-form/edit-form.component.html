@@ -1,0 +1,70 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0" id="titulo">Completa tu información laboral</h4>
+                </div>
+                <div class="card-body" style="background-color: #F8F8FB;"> <!-- Color de fondo del cuerpo del formulario -->
+                    <div class="row">
+                        <div class="col-12">
+                            <p class="card-title-desc">
+                                Completa toda la información para la categoría
+                            </p>
+                        </div>
+                        <form class="row" [formGroup]="group" (ngSubmit)="ngSubmit()">
+                            <div class="col-md-6 mb-4">
+                                <label for="first_name">Nombre</label>
+                                <input id="first_name" placeholder="Nombre" formControlName="first_name" type="text" class="form-control" autocomplete="new-data" [ngClass]="ngClassValidate(group, 'first_name')" />
+                                <div *ngIf="submit && f && f['first_name'].errors" class="invalid-feedback">
+                                    El nombre es obligatorio.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="last_name">Apellido</label>
+                                <input id="last_name" placeholder="Apellido" formControlName="last_name" type="text" class="form-control" autocomplete="new-data" [ngClass]="ngClassValidate(group, 'last_name')" />
+                                <div *ngIf="submit && f && f['last_name'].errors" class="invalid-feedback">
+                                    El apellido es obligatorio.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="cargo">Cargo</label>
+                                <input id="cargo" placeholder="Cargo" formControlName="cargo" type="text" class="form-control" autocomplete="new-data" [ngClass]="ngClassValidate(group, 'cargo')" />
+                                <div *ngIf="submit && f && f['cargo'].errors" class="invalid-feedback">
+                                    El cargo es obligatorio.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="salario_base">Salario Base</label>
+                                <input id="salario_base" placeholder="Salario Base" formControlName="salario_base" type="number" class="form-control" autocomplete="new-data" [ngClass]="ngClassValidate(group, 'salario_base')" />
+                                <div *ngIf="submit && f && f['salario_base'].errors" class="invalid-feedback">
+                                    El salario es obligatorio.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="tipo_contrato">Tipo de Contrato</label>
+                                <input id="tipo_contrato" placeholder="Tipo de Contrato" formControlName="tipo_contrato" type="text" class="form-control" autocomplete="new-data" [ngClass]="ngClassValidate(group, 'tipo_contrato')" />
+                                <div *ngIf="submit && f && f['tipo_contrato'].errors" class="invalid-feedback">
+                                    El tipo de contrato es obligatorio.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="lista_de_proyectos">Lista de Proyectos</label>
+                                <textarea id="lista_de_proyectos" placeholder="Lista de Proyectos" formControlName="lista_de_proyectos" class="form-control" autocomplete="new-data" [ngClass]="ngClassValidate(group, 'lista_de_proyectos')"></textarea>
+                                <div *ngIf="submit && f && f['lista_de_proyectos'].errors" class="invalid-feedback">
+                                    La lista de proyectos es obligatoria.
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="text-end">
+                                    <button type="submit" class="btn btn-primary">Guardar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,657 @@
+<nav
+  class="navbar navbar-expand-lg navigation fixed-top sticky"
+  (window:scroll)="windowScroll()"
+  id="navbar"
+>
+  <div class="container">
+    <a class="navbar-logo" routerLink="/">
+      <img
+        src="assets/images/logos/favicon.png"
+        alt=""
+        height="70"
+        class="logo logo-dark"
+      />
+      <img
+        src="assets/images/logos/favicon.png"
+        alt=""
+        height="70"
+        class="logo logo-light"
+      />
+    </a>
+
+    <button
+      type="button"
+      class="btn btn-sm px-3 font-size-16 d-lg-none header-item"
+      data-toggle="collapse"
+      data-target="#topnav-menu-content"
+      (click)="toggleMenu()"
+    >
+      <i class="fa fa-fw fa-bars"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="topnav-menu-content">
+      <ul class="navbar-nav ms-auto" id="topnav-menu">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="javascript: void(0);"
+            [ngxScrollTo]="'home'"
+            [ngClass]="{ active: currentSection === 'home' }"
+            >Inicio</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="javascript: void(0);"
+            [ngxScrollTo]="'features'"
+            [ngClass]="{ active: currentSection === 'features' }"
+            >¿Por qué elegir Yéminus?</a
+          >
+        </li>
+        <!-- <li class="nav-item" *ngIf="!isLoggedIn">
+          <a
+            class="nav-link"
+            routerLink="/account/auth/wholesale-form"
+            >Mayorista</a
+          >
+        </li>-->
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="javascript: void(0);"
+            [ngxScrollTo]="'faqs'"
+            [ngClass]="{ active: currentSection === 'faqs' }"
+            >FAQs</a
+          >
+        </li>
+      </ul>
+
+      <!-- <div class="dropdown d-inline-block" ngbDropdown>
+        <button
+          routerLink="/products/cart"
+          type="button"
+          class="btn header-item noti-icon">
+          <i class="bx bx-cart"></i>
+          <span class="badge bg-danger rounded-pill">0</span>
+        </button>
+      </div>-->
+
+      <div class="d-flex align-items-center ms-3">
+        <div class="d-flex" *ngIf="!isLoggedIn; else accountMenu">
+          <a
+            class="me-4 mt-2 text-decoration-underline"
+            routerLink="/account/auth/signup-2" 
+          >
+            Registro
+          </a>
+          <button
+          routerLink="/account/auth/signup-2" class="btn btn-rounded btn-light bg-white mx-1 fw-bold google-btn">
+       Inicio de Sesion
+          </button>
+        </div>
+
+        <ng-template #accountMenu>
+          <app-page-header-user-dropdown
+            [landing]="true"
+          ></app-page-header-user-dropdown>
+        </ng-template>
+      </div>
+      <!-- <div class="dropdown d-inline-block" ngbDropdown>
+        <button
+          type="button"
+          class="btn header-item noti-icon"
+          id="page-header-settings-dropdown"
+          ngbDropdownToggle
+        >
+          <i class="bx bx-cog"></i>
+        </button>
+        <div
+          class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
+          ngbDropdownMenu
+          aria-labelledby="page-header-notifications-dropdown"
+        >
+          <div class="p-3">
+            <div class="row align-items-center">
+              <div class="col">
+                <h6 class="m-0">Configuración</h6>
+              </div>
+            </div>
+          </div>
+          <app-ngx-simplebar style="position: relative; height: 230px">
+            <div class="px-3">
+              <h6 class="mt-4 mb-3">Theme Mode</h6>
+              <div class="form-check sidebar-setting">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="theme-color"
+                  id="theme-color-light"
+                  [checked]="mode === 'light'"
+                  (change)="changeMode('light')"
+                />
+                <label class="form-check-label" for="theme-color-light"
+                  >Light</label
+                >
+              </div>
+              <div class="form-check sidebar-setting">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="theme-color"
+                  id="theme-color-dark"
+                  [checked]="mode === 'dark'"
+                  (change)="changeMode('dark')"
+                />
+                <label class="form-check-label" for="theme-color-dark"
+                  >Dark</label
+                >
+              </div>
+            </div>
+          </app-ngx-simplebar>
+          <div class="p-2 border-top d-grid">
+            <a
+              class="btn btn-sm btn-link font-size-14 text-center"
+              href="javascript:void(0)"
+            >
+              <i class="mdi mdi-arrow-right-circle me-1"></i>
+              Reset
+            </a>
+          </div>
+        </div>
+      </div>-->
+    </div>
+  </div>
+</nav>
+
+<div
+  appScrollspy
+  [spiedTags]="['SECTION']"
+  (sectionChange)="onSectionChange($event)"
+>
+  <!-- hero section start -->
+
+  <section class="section bg-ico-hero bg-dark-color justify-content-center" id="home">
+   
+    <div class="bg-overlay"></div>
+    <div class="container">
+
+      <div class="row align-items-center">
+        <div class="col-12 d-flex justify-content-center">
+          <div class="text-white-50 text-center">
+            <p class="font-size-14 text-white">
+              Bienvenid@ a
+            </p>
+            <h1 class="text-white fw-semibold mb-3 hero-title">
+              Yéminus
+            </h1>
+            <div>
+              <p class="font-size-14 text-white mt-4 ">
+                Tu solución integral para mejorar la gestión del talento humano en tu empresa. 
+                <br>
+                ¿Estás cansado de lidiar con procesos de reclutamiento ineficientes, contrataciones demoradas y una baja tasa de retención de personal? 
+                <br>
+                ¡Ya no tienes que preocuparte más! Yéminus está aquí para ayudarte a optimizar cada aspecto de la gestión de recursos humanos.
+              </p>
+            </div>
+          
+        
+            <div class="button-items mt-5 d-flex justify-content-center gap-2">
+              <button routerLink="/account/auth/signup-2" class="btn btn-rounded btn-light bg-white mx-1 fw-bold google-btn">
+                <span class="ms-2 text-black">Registro</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+    </div>
+      <!-- end row -->
+    </div>
+    <!-- end container -->
+  </section>
+  <!-- hero section end -->
+
+
+  <section class="section pt-4 bg-white" id="features">
+    <div class="container">
+      <div class="row mt-4">
+        <div class="col-lg-12">
+          <div class="mb-5">
+            <br>
+            <h1 class="description-title fw-bold text-center">¿Por qué elegir Yéminus?</h1>
+            <br>
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <li>
+                    <h5>1. Eficiencia y Automatización:</h5>
+                    <p>Simplifica y automatiza tus procesos de reclutamiento, selección, contratación, capacitación y retención del personal.</p>
+                  </li>
+                  <li>
+                    <h5>2. Mejora de la Calidad:</h5>
+                    <p>Eleva la calidad de tus contrataciones, reduce los tiempos de contratación y aumenta la satisfacción y retención de tus empleados.</p>
+                  </li>
+                  <li>
+                    <h5>3. Cumplimiento Normativo:</h5>
+                    <p>Mantente al día con las regulaciones laborales y de privacidad, minimizando el riesgo de litigios y sanciones.</p>
+                  </li>
+                  <li>
+                    <h5>4. Comunicación Interna:</h5>
+                    <p>Facilita una comunicación interna efectiva con un sistema de envío de correos electrónicos oportuno y preciso.</p>
+                  </li>
+                  <li>
+                    <h5>5. Experiencia del Candidato:</h5>
+                    <p>Refina tu proceso de contratación para ofrecer una experiencia transparente y positiva a los candidatos, fortaleciendo tu marca empleadora.</p>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <ul class="list-unstyled">
+                  <li>
+                    <h5>¿Qué ofrecemos?</h5>
+                  </li>
+                  <li>
+                    <h5>1. Automatización de Procesos:</h5>
+                    <p>Simplifica y agiliza tus procesos de RR.HH. desde la contratación hasta la liquidación de nómina.</p>
+                  </li>
+                  <li>
+                    <h5>2. Cumplimiento Normativo:</h5>
+                    <p>Mantente siempre al día con las regulaciones legales y laborales, minimizando riesgos y sanciones.</p>
+                  </li>
+                  <li>
+                    <h5>3. Soporte Personalizado:</h5>
+                    <p>Un equipo dedicado de soporte técnico siempre está listo para ayudarte en cada paso del camino.</p>
+                  </li>
+                  <li>
+                    <h5>4. Interfaz Intuitiva:</h5>
+                    <p>Una interfaz de usuario intuitiva y fácil de usar para una experiencia sin complicaciones.</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+
+
+
+
+
+  <!-- Faqs start -->
+  <section class="section" id="faqs">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="text-center mb-5">
+            <div class="small-title">FAQs</div>
+            <h4>Preguntas frecuentes</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="vertical-nav">
+            <div class="row">
+              <div class="col-lg-2 col-sm-4">
+                <ul
+                  ngbNav
+                  #nav="ngbNav"
+                  [activeId]="1"
+                  class="nav-pills flex-column"
+                >
+                  <li [ngbNavItem]="1">
+                    <a ngbNavLink>
+                      <i class="bx bx-help-circle nav-icon d-block mb-2"></i>
+                      <p class="fw-bold mb-0">Preguntas generales</p>
+                    </a>
+                    <ng-template ngbNavContent>
+                      <div class="card">
+                        <div class="card-body">
+                          <h4 class="card-title mb-4">Preguntas generales</h4>
+
+                          <ngb-accordion
+                            [closeOthers]="true"
+                            activeIds="static-1"
+                            class="custom-accordion"
+                          >
+                            <ngb-panel id="static-1">
+                              <ng-template ngbPanelTitle class="accordion-list">
+                                <div>¿Qué es Yéminus?</div>
+                              </ng-template>
+                              <ng-template ngbPanelContent>
+                                <div class="card-body p-0">
+                                  <p class="mb-0">
+                                    En Yéminus, entendemos los desafíos que enfrenta tu departamento de Recursos Humanos. 
+                                    Desde la ineficiencia en los procesos de reclutamiento hasta la falta de seguimiento 
+                                    adecuado de los candidatos, estamos aquí para ofrecerte una solución integral que 
+                                    transformará la forma en que gestionas el talento humano en tu empresa.
+                                  </p>
+                                </div>
+                              </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="static-2">
+                              <ng-template ngbPanelTitle class="accordion-list">
+                                <div>¿Por qué lo usamos?</div>
+                              </ng-template>
+                              <ng-template ngbPanelContent>
+                                <div class="card-body p-0">
+                                  <p class="mb-0">
+                                    Usamos Yéminus porque ofrece una solución integral para abordar los desafíos en la gestión 
+                                    del talento humano en las empresas.
+                                  </p>
+                                </div>
+                              </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="static-3">
+                              <ng-template ngbPanelTitle class="accordion-list">
+                                <div>¿Cómo es posible?</div>
+                                <div>¿Cómo es posible?</div>
+                              </ng-template>
+                              <ng-template ngbPanelContent>
+                                <div class="card-body p-0">
+                                  <p class="mb-0">
+                                    Yéminus nos ayuda a optimizar nuestra gestión del talento humano, mejorar la eficiencia de 
+                                    nuestros procesos y garantizar el cumplimiento normativo, todo mientras ofrecemos una experiencia 
+                                    positiva tanto para nuestros empleados como para los candidatos.
+                                  </p>
+                                </div>
+                              </ng-template>
+                            </ngb-panel>
+                          </ngb-accordion>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </li>
+                  <!-- <li [ngbNavItem]="2">
+                    <a ngbNavLink>
+                      <i class="bx bx-receipt nav-icon d-block mb-2"></i>
+                      <p class="fw-bold mb-0">Token sale</p>
+                    </a>
+                    <ng-template ngbNavContent>
+                      <div class="card">
+                        <div class="card-body">
+                          <h4 class="card-title mb-4">Token sale</h4>
+
+                          <ngb-accordion
+                            [closeOthers]="true"
+                            activeIds="static-2"
+                            class="custom-accordion"
+                          >
+                            <ngb-panel id="static-1">
+                              <ng-template ngbPanelTitle class="accordion-list">
+                                <div>Why do we use it ?</div>
+                              </ng-template>
+                              <ng-template ngbPanelContent>
+                                <div class="card-body p-0">
+                                  <p class="mb-0">
+                                    If several languages coalesce, the grammar
+                                    of the resulting language is more simple and
+                                    regular than that of the individual
+                                    languages. The new common language will be
+                                    more simple and regular than the existing
+                                    European languages.
+                                  </p>
+                                </div>
+                              </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="static-2">
+                              <ng-template ngbPanelTitle class="accordion-list">
+                                <div>What is Lorem Ipsum ?</div>
+                              </ng-template>
+                              <ng-template ngbPanelContent>
+                                <div class="card-body p-0">
+                                  <p class="mb-0">
+                                    Everyone realizes why a new common language
+                                    would be desirable: one could refuse to pay
+                                    expensive translators. To achieve this, it
+                                    would be necessary to have uniform grammar,
+                                    pronunciation and more common words.
+                                  </p>
+                                </div>
+                              </ng-template>
+                            </ngb-panel>
+
+                            <ngb-panel id="static-3">
+                              <ng-template ngbPanelTitle class="accordion-list">
+                                <div>Where can I get some ?</div>
+                              </ng-template>
+                              <ng-template ngbPanelContent>
+                                <div class="card-body p-0">
+                                  <p class="mb-0">
+                                    To an English person, it will seem like
+                                    simplified English, as a skeptical Cambridge
+                                    friend of mine told me what Occidental is.
+                                    The European languages are members of the
+                                    same family. Their separate existence is a
+                                    myth.
+                                  </p>
+                                </div>
+                              </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="static-4">
+                              <ng-template ngbPanelTitle class="accordion-list">
+                                <div>Where does it come from ?</div>
+                              </ng-template>
+                              <ng-template ngbPanelContent>
+                                <div class="card-body p-0">
+                                  <p class="mb-0">
+                                    It will be as simple as Occidental; in fact,
+                                    it will be Occidental. To an English person,
+                                    it will seem like simplified English, as a
+                                    skeptical Cambridge friend of mine told me
+                                    what Occidental.
+                                  </p>
+                                </div>
+                              </ng-template>
+                            </ngb-panel>
+                          </ngb-accordion>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </li>
+                  <li [ngbNavItem]="3">
+                    <a ngbNavLink>
+                      <i class="bx bx-timer d-block nav-icon mb-2"></i>
+                      <p class="fw-bold mb-0">Roadmap</p>
+                    </a>
+                    <ng-template ngbNavContent>
+                      <div class="card">
+                        <div class="card-body">
+                          <h4 class="card-title mb-4">Roadmap</h4>
+
+                          <ngb-accordion
+                            [closeOthers]="true"
+                            activeIds="static-1"
+                            class="custom-accordion"
+                          >
+                            <ngb-panel id="static-1">
+                              <ng-template ngbPanelTitle class="accordion-list">
+                                <div>Where can I get some ?</div>
+                              </ng-template>
+                              <ng-template ngbPanelContent>
+                                <div class="card-body p-0">
+                                  <p class="mb-0">
+                                    To an English person, it will seem like
+                                    simplified English, as a skeptical Cambridge
+                                    friend of mine told me what Occidental is.
+                                    The European languages are members of the
+                                    same family. Their separate existence is a
+                                    myth.
+                                  </p>
+                                </div>
+                              </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="static-2">
+                              <ng-template ngbPanelTitle class="accordion-list">
+                                <div>What is Lorem Ipsum ?</div>
+                              </ng-template>
+                              <ng-template ngbPanelContent>
+                                <div class="card-body p-0">
+                                  <p class="mb-0">
+                                    Everyone realizes why a new common language
+                                    would be desirable: one could refuse to pay
+                                    expensive translators. To achieve this, it
+                                    would be necessary to have uniform grammar,
+                                    pronunciation and more common words.
+                                  </p>
+                                </div>
+                              </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="static-3">
+                              <ng-template ngbPanelTitle class="accordion-list">
+                                <div>Why do we use it ?</div>
+                              </ng-template>
+                              <ng-template ngbPanelContent>
+                                <div class="card-body p-0">
+                                  <p class="mb-0">
+                                    If several languages coalesce, the grammar
+                                    of the resulting language is more simple and
+                                    regular than that of the individual
+                                    languages. The new common language will be
+                                    more simple and regular than the existing
+                                    European languages.
+                                  </p>
+                                </div>
+                              </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="static-4">
+                              <ng-template ngbPanelTitle class="accordion-list">
+                                <div>Where does it come from ?</div>
+                              </ng-template>
+                              <ng-template ngbPanelContent>
+                                <div class="card-body p-0">
+                                  <p class="mb-0">
+                                    It will be as simple as Occidental; in fact,
+                                    it will be Occidental. To an English person,
+                                    it will seem like simplified English, as a
+                                    skeptical Cambridge friend of mine told me
+                                    what Occidental.
+                                  </p>
+                                </div>
+                              </ng-template>
+                            </ngb-panel>
+                          </ngb-accordion>
+                        </div>
+                      </div>
+                    </ng-template>
+                  </li> -->
+                </ul>
+              </div>
+              <div class="col-lg-10">
+                <div [ngbNavOutlet]="nav"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Faqs end -->
+
+  
+
+  <!-- Footer start -->
+<footer class="landing-footer footer-bg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-sm-6">
+        <div class="mb-4 mb-lg-0">
+
+          <h5 class="mb-3 footer-list-title">Empresa</h5>
+          <ul class="list-unstyled footer-list-menu">
+            <li>
+              <a class="cursor-pointer" [ngxScrollTo]="'features'"
+                >¿Por qué elegir Yéminus?</a
+              >
+            </li>
+            <li><a class="cursor-pointer" [ngxScrollTo]="'faqs'">FAQs</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="mb-4 mb-lg-0">
+          <h5 class="mb-3 footer-list-title">Recursos</h5>
+          <ul class="list-unstyled footer-list-menu">
+            <li><a href="/#/meta/privacy-policy">Política de privacidad</a></li>
+            <li><a href="/#/meta/terms-use">Términos y condiciones</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="mb-4 mb-lg-0">
+          <h5 class="mb-3 footer-list-title">Links</h5>
+          <ul class="list-unstyled footer-list-menu">
+            <li>
+              <a class="cursor-pointer" [ngxScrollTo]="'home'">Plan de trabajo</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-sm-6">
+        <div class="mb-4 mb-lg-0">
+          <h5 class="mb-3 footer-list-title">Últimas Noticias</h5>
+          <div class="blog-post">
+            <a href="javascript: void(0);" class="post">
+              <div class="badge badge-soft-success font-size-11 mb-3">
+                Yéminus en acción
+              </div>
+              <h5 class="post-title">
+                Yéminus ha desplegado sus servicios al público
+              </h5>
+              <p class="mb-0">
+                <i class="bx bx-calendar me-1"></i> Feb, 2024
+              </p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Additional content -->
+    <div class="row">
+      <div class="col-lg-6">
+        <h5>Contacto</h5>
+        <ul>
+          <li>Facebook</li>
+          <li>Twitter</li>
+          <li>YouTube</li>
+        </ul>
+        <p><strong>Llámanos:</strong></p>
+        <ul>
+          <li>Teléfono: +57 123 4567890 Fax: 0987654</li>
+          <li>Conmutador: (57) (123) 456 7890</li>
+          <li>Correo: info@yeminus.com</li>
+          <li><strong>Dirección:</strong></li>
+          <li>Yéminus, Pereira, Risaralda, Colombia</li>
+        </ul>
+      </div>
+    </div>
+    <!-- end additional content -->
+    <!-- end row -->
+
+    <hr class="footer-border my-5" />
+
+    <div class="row">
+      <div class="col-lg-6">
+        <div class="mb-4">
+          <img src="assets/images/logos/favicon.png" alt="" height="70" />
+        </div>
+
+        <p class="mb-2">2024 © Yéminus.</p>
+        <p>
+          Yéminus es una solución innovadora que simplifica y automatiza los procesos de recursos humanos. Nuestra misión es mejorar la eficiencia y la calidad en la gestión del personal.
+        </p>
+      </div>
+    </div>
+  </div>
+  <!-- end container -->
+</footer>
+<!-- Footer end -->
+
+</div>
