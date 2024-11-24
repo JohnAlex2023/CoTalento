@@ -10,7 +10,7 @@ import { NgbDropdownModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ApiInterceptor } from '@interceptors/api.interceptor';
 import { FormsModule } from '@angular/forms';
 import { GenericServicesModule } from '@modules/generic-services/generic-services.module';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi, withJsonpSupport } from '@angular/common/http';
 import { HttpClientJsonpModule } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 import { ModelService } from '@services/common/model.service';
@@ -25,31 +25,23 @@ import { EditComponent } from './components/edit/edit.component';
 
 
 
-@NgModule({
-  declarations: [
-    EditComponent,
-    FormComponent,
-    ListComponent
-  ],
-  imports: [
-    CommonModule,
-    PsychologicalInterviewRoutingModule,
-    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    ReactiveFormsModule,
-    NgxDropzoneModule,
-    NgSelectModule,
-    NgbPaginationModule,
-    NgbDropdownModule,
-    NgbNavModule,
-    HttpClientJsonpModule,
-    HttpClientModule,
-    UiModule,
-    NgbModule,
-    GenericServicesModule,
-    TranslateModule,
-
-  ]
-})
+@NgModule({ declarations: [
+        EditComponent,
+        FormComponent,
+        ListComponent
+    ], imports: [CommonModule,
+        PsychologicalInterviewRoutingModule,
+        CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        ReactiveFormsModule,
+        NgxDropzoneModule,
+        NgSelectModule,
+        NgbPaginationModule,
+        NgbDropdownModule,
+        NgbNavModule,
+        UiModule,
+        NgbModule,
+        GenericServicesModule,
+        TranslateModule], providers: [provideHttpClient(withInterceptorsFromDi(), withJsonpSupport())] })
 export class PsychologicalInterviewModule { }
