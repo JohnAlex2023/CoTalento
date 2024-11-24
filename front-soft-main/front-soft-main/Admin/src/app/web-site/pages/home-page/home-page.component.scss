@@ -1,10 +1,9 @@
-
 .main-cards-bg {
-  background-color: #f3f5fe;
+  background-color: #f8fafc; /* Fondo claro neutro */
 }
 
 .dark-titles-color {
-  color: #000842;
+  color: #ef10a8; /* Azul oscuro profesional */
 }
 
 .vector-ms {
@@ -16,19 +15,18 @@
   width: 3%;
 }
 
-
 .cursor-pointer {
   cursor: pointer !important;
 }
 
 .d-xs-none {
-  @media (max-width: 991px){
+  @media (max-width: 991px) {
     display: none !important;
   }
 }
 
 .text-xs-center {
-  @media (max-width: 991px){
+  @media (max-width: 991px) {
     text-align: center !important;
   }
 }
@@ -38,12 +36,12 @@
 }
 
 .red-feature {
-  background-color: #f6d1e0;
-  border: 2.5px solid #f86d8a;
+  background-color: #ffe4e6; /* Rojo pastel */
+  border: 2.5px solid #ef4444; /* Rojo brillante */
   border-radius: 12px !important;
   width: 130%;
   z-index: 100;
-  @media (max-width: 991px){
+  @media (max-width: 991px) {
     width: 80% !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -51,13 +49,13 @@
 }
 
 .green-feature {
-  background-color: #b7edf2;
-  border: 2.5px solid #0bd4cf;
+  background-color: #dcfce7; /* Verde pastel */
+  border: 2.5px solid #22c55e; /* Verde brillante */
   border-radius: 12px !important;
   width: 130%;
   z-index: 100;
   right: 180px;
-  @media (max-width: 991px){
+  @media (max-width: 991px) {
     width: 80% !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -66,12 +64,12 @@
 }
 
 .purple-feature {
-  background-color: #e4d1f6;
-  border: 2.5px solid #a26df8;
+  background-color: #ede9fe; /* Lavanda pastel */
+  border: 2.5px solid #6366f1; /* Azul lavanda */
   border-radius: 12px !important;
   width: 130%;
   z-index: 100;
-  @media (max-width: 991px){
+  @media (max-width: 991px) {
     width: 80% !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -79,13 +77,13 @@
 }
 
 .blue-feature {
-  background-color: #b8e0f5;
-  border: 2.5px solid #0ba5f2;
+  background-color: #e0f2fe; /* Azul pastel */
+  border: 2.5px solid #3b82f6; /* Azul vibrante */
   border-radius: 12px !important;
   width: 130%;
   z-index: 100;
   right: 210px;
-  @media (max-width: 991px){
+  @media (max-width: 991px) {
     width: 80% !important;
     margin-left: auto !important;
     margin-right: auto !important;
@@ -98,17 +96,22 @@
   width: 9em;
 }
 
-.b-width
-{
+.b-width {
   min-width: 90px;
 }
 
 .bg-dark-color {
-  background-color: #0c1323 !important;
+  background-color: #1e293b !important; /* Azul muy oscuro */
 }
 
 .rainbow-text {
-  background-image: linear-gradient(to left, #ce2471f0, indigo, rgba(39, 105, 246, 0.959), #16e3e2);
+  background-image: linear-gradient(
+    to left,
+    #34d399, /* Verde brillante */
+    #2563eb, /* Azul intenso */
+    #3b82f6, /* Azul intermedio */
+    #facc15 /* Amarillo vivo */
+  );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -123,31 +126,31 @@
 
 .icon-wrapper {
   border-radius: 14px;
-  background-color: #fff;
-  border: 1px solid #dee2e7;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb; /* Gris claro */
   margin-bottom: 16px;
-  box-shadow: 0 3px 13px -4px #dee2e7;
+  box-shadow: 0 3px 13px -4px #e5e7eb; /* Sombra suave */
   i {
-    font-size: 1.8em
+    font-size: 1.8em;
   }
 }
 
 .description-title {
   font-size: 48px !important;
-  color: #000842;
+  color: #1f2937; /* Azul oscuro profesional */
 }
 
 .description-subtitle {
   font-size: 28px !important;
-  color: #000842;
+  color: #1f2937; /* Azul oscuro profesional */
 }
 
 .google-btn {
-  box-shadow: 0 3px 13px -4px #ff00ea;
+  box-shadow: 0 3px 13px -4px #3b82f6; /* Azul vibrante */
 }
 
 .mt-custom-sm {
-  @media (max-width: 992px){
+  @media (max-width: 992px) {
     margin-top: 40px !important;
   }
 }
