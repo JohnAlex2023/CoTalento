@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/vue": "^8.1.0"
+  }
+}
